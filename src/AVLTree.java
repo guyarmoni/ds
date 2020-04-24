@@ -48,7 +48,6 @@ public class AVLTree {
    * complexity: O(log(n))
    */
   private IAVLNode doSearch(int k) {
-	  
 	  /* checks if tree is empty */
 	  if (this.empty()) {return null;} 	
 	  
@@ -64,7 +63,7 @@ public class AVLTree {
 			  currNode = currNode.getRight();
 		  }
 		  else {
-				currNode = currNode.getLeft();
+		  		currNode = currNode.getLeft();
 		  }
 		  currKey = currNode.getKey();
 	  }
@@ -143,8 +142,8 @@ public class AVLTree {
 	  node.setParent(pivot);						
 	  
 	  /* correct size and height for pivot and node */
-	  ((AVLNode) pivot).fixSizeHeight();
 	  ((AVLNode) node).fixSizeHeight();
+	  ((AVLNode) pivot).fixSizeHeight();
   }
   
   
@@ -170,8 +169,8 @@ public class AVLTree {
 	  node.setParent(pivot);				
 	    
 	  /* correct size and height for pivot and node */
-	  ((AVLNode) pivot).fixSizeHeight();
 	  ((AVLNode) node).fixSizeHeight();
+	  ((AVLNode) pivot).fixSizeHeight();
   }
   
   
@@ -183,25 +182,28 @@ public class AVLTree {
    * complexity: O(1)
    */
   private void rotateRL(IAVLNode node) {
-	  IAVLNode pivot = node.getRight().getLeft(); 	/* set pivot */
-	  node.setRight(pivot.getLeft());				/* pivot's left subtree becomes rotated node's right subtree */
-	  pivot.getParent().setLeft(pivot.getRight());	/* pivot's right subtree becomes pivot's parent left subtree */
-	  pivot.getParent().setParent(pivot); 			/* pivot becomes his previous parent's parent */
-	  pivot.setRight(pivot.getParent()); 			/* pivot's previous parent becomes pivot's right son */
-	 
-	  /* node's parent becomes new pivot's parent
-	   * set new tree root if needed
-	   * if node was left son, replace with pivot as left son, otherwise replace with pivot as right son  */
-	  this.swapSonOrRoot(node, pivot);
-	  
-	  /* set node as pivot's new left subtree, set pivot as node's parent */
-	  pivot.setLeft(node);								
-	  node.setParent(pivot);							
-	  
-	  /* correct size and height for pivot, node and extra node between them which is pivot's new right son */
-	  ((AVLNode) pivot).fixSizeHeight();
-	  ((AVLNode) node).fixSizeHeight();
-	  ((AVLNode) pivot.getRight()).fixSizeHeight();
+  	rotateR(node.getRight());
+  	rotateL(node);
+
+//	  IAVLNode pivot = node.getRight().getLeft(); 	/* set pivot */
+//	  node.setRight(pivot.getLeft());				/* pivot's left subtree becomes rotated node's right subtree */
+//	  pivot.getParent().setLeft(pivot.getRight());	/* pivot's right subtree becomes pivot's parent left subtree */
+//	  pivot.getParent().setParent(pivot); 			/* pivot becomes his previous parent's parent */
+//	  pivot.setRight(pivot.getParent()); 			/* pivot's previous parent becomes pivot's right son */
+//
+//	  /* node's parent becomes new pivot's parent
+//	   * set new tree root if needed
+//	   * if node was left son, replace with pivot as left son, otherwise replace with pivot as right son  */
+//	  this.swapSonOrRoot(node, pivot);
+//
+//	  /* set node as pivot's new left subtree, set pivot as node's parent */
+//	  pivot.setLeft(node);
+//	  node.setParent(pivot);
+//
+//	  /* correct size and height for pivot, node and extra node between them which is pivot's new right son */
+//	  ((AVLNode) pivot).fixSizeHeight();
+//	  ((AVLNode) node).fixSizeHeight();
+//	  ((AVLNode) pivot.getRight()).fixSizeHeight();
   }
   
   
@@ -213,25 +215,28 @@ public class AVLTree {
    * complexity: O(1)
    */
   private void rotateLR(IAVLNode node) {
-	  IAVLNode pivot = node.getLeft().getRight(); 	/* set pivot */
-	  node.setLeft(pivot.getRight());				/* pivot's right subtree becomes rotated node's left subtree */
-	  pivot.getParent().setRight(pivot.getLeft());	/* pivot's left subtree becomes pivot's parent right subtree */
-	  pivot.getParent().setParent(pivot); 			/* pivot becomes his previous parent's parent */
-	  pivot.setLeft(pivot.getParent()); 			/* pivot's previous parent becomes pivot's left son */
-	  
-	  /* node's parent becomes new pivot's parent
-	   * set new tree root if needed
-	   * if node was left son, replace with pivot as left son, otherwise replace with pivot as right son  */
-	  this.swapSonOrRoot(node, pivot);
-	  
-	  /* set node as pivot's new right subtree, set pivot as node's parent */
-	  pivot.setRight(node);								
-	  node.setParent(pivot);							
-	  
-	  /* correct size and height for pivot, node and extra node between them which is pivot's new left son */
-	  ((AVLNode) pivot).fixSizeHeight();
-	  ((AVLNode) node).fixSizeHeight();
-	  ((AVLNode) pivot.getLeft()).fixSizeHeight();
+  	rotateL(node.getLeft());
+  	rotateR(node);
+
+//	  IAVLNode pivot = node.getLeft().getRight(); 	/* set pivot */
+//	  node.setLeft(pivot.getRight());				/* pivot's right subtree becomes rotated node's left subtree */
+//	  pivot.getParent().setRight(pivot.getLeft());	/* pivot's left subtree becomes pivot's parent right subtree */
+//	  pivot.getParent().setParent(pivot); 			/* pivot becomes his previous parent's parent */
+//	  pivot.setLeft(pivot.getParent()); 			/* pivot's previous parent becomes pivot's left son */
+//
+//	  /* node's parent becomes new pivot's parent
+//	   * set new tree root if needed
+//	   * if node was left son, replace with pivot as left son, otherwise replace with pivot as right son  */
+//	  this.swapSonOrRoot(node, pivot);
+//
+//	  /* set node as pivot's new right subtree, set pivot as node's parent */
+//	  pivot.setRight(node);
+//	  node.setParent(pivot);
+//
+//	  /* correct size and height for pivot, node and extra node between them which is pivot's new left son */
+//	  ((AVLNode) pivot).fixSizeHeight();
+//	  ((AVLNode) node).fixSizeHeight();
+//	  ((AVLNode) pivot.getLeft()).fixSizeHeight();
   }
   
   /**
@@ -933,7 +938,7 @@ public class AVLTree {
 	/* return true if node is left son, false otherwise (right son or root) */
 	public boolean isLeftSon() {
 		if (this.parent != null) {
-			if (this.parent == this.getParent().getLeft()) {
+			if (this == this.getParent().getLeft()) {
 				return true;
 			}
 		}

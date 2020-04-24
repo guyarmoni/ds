@@ -61,7 +61,7 @@
 			  
 	  }
 	  this.tree.fixTree(insertedNode);
-	   
+
 	  return 0;
    }
 
