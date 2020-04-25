@@ -12,7 +12,7 @@ public class Measurements {
         String value = "a";
 
         for (int j = 1; j <= i; j++) {
-            listSize = j * 10;
+            listSize = j * 10000;
             System.out.println("~~~~~ List Size: " + listSize + " ~~~~~" + "\n");
             int k = 0;
 
@@ -20,15 +20,16 @@ public class Measurements {
             TreeList treeList = new TreeList();
             long startTime = System.nanoTime();
             while (k < listSize) {
+//                System.out.println("in iteration number " + k);
                 treeList.insert(scenario.insertionIndex(k), key, value);
                 k++;
             }
             long endTime = System.nanoTime();
             System.out.println("Tree List -");
-            System.out.println("Average Num of Right Rotations: " + treeList.tree.getRightRotations()/listSize);
-            System.out.println("Average Num of Left Rotations: " + treeList.tree.getLeftRotations()/listSize);
-            System.out.println("Average Insertion Time (in milliseconds): "
-                    + ( (endTime - startTime)/1000000 )/listSize + "\n");
+            System.out.println("Average Num of Right Rotations: " + treeList.tree.getRightRotations()); // todo: add mean
+            System.out.println("Average Num of Left Rotations: " + treeList.tree.getLeftRotations()); // todo: add mean
+            System.out.println("Average Insertion Time (in nanoseconds): "
+                    + ( (endTime - startTime) )/listSize + "\n");
 
             /* measuring CircularList */
             k = 0;
@@ -40,8 +41,8 @@ public class Measurements {
             }
             endTime = System.nanoTime();
             System.out.println("Circular List -");
-            System.out.println("Average Insertion Time (in milliseconds): "
-                    + ( (endTime - startTime)/1000000 )/listSize + "\n");
+            System.out.println("Average Insertion Time (in nanoseconds): "
+                    + ( (endTime - startTime) )/listSize + "\n");
         }
     }
 

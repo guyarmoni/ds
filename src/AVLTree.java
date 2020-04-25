@@ -299,9 +299,7 @@ public class AVLTree {
 		if (this.empty()) {						
 			this.root = node;
 		}
-		
-		/* increase tree size */
-		this.size += 1;							
+
 		return node;
 	}
   
@@ -329,6 +327,8 @@ public class AVLTree {
 				parent.setRight(son);
 			}
 		}
+		/* increase tree size */
+		this.size += 1;
 	}
   
 	
@@ -852,7 +852,9 @@ public class AVLTree {
 		if (i == this.size) {
 			AVLTree.AVLNode maxNode = this.select(this.root, this.size);
 			insertedNode.setParent(maxNode);
-			maxNode.setRight(insertedNode);
+			if (!this.empty()) {
+				maxNode.setRight(insertedNode);
+			}
 		}
 		
 		/* find the ith node in tree, if it has no left son, put new node as left son
@@ -873,7 +875,11 @@ public class AVLTree {
 		}
 		
 		/* perform balancing, correct heights and sizes */
-		this.fixTree(insertedNode, false);
+		this.fixTree(insertedNode.getParent(), false);
+
+		/* increase tree size */
+		this.size += 1;
+
 		return 0;
 	}
 	
