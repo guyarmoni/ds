@@ -168,14 +168,14 @@ public class TestStage1 {
         avlTree.delete(99);
         if (avlTree.size() != 98) {
             addError("added 0-99, deleted 99 then 0 then 99 again(shouldn't affect). size expected is 98, got something else",5,3);
-            System.out.println("size is " + avlTree.size);
+            System.out.println("size is " + avlTree.size());
             flag = false;
         }
         //TEST 5.4
         TestUtils.insertKeysToAVLTree(avlTree, TestUtils.createKeysArray(200, 252));
         if(avlTree.size() != 150){
             addError("added 100 nodes, deleted 2 and added 52, size was not 150",5,4);
-            System.out.println("size is " + avlTree.size);
+            System.out.println("size is " + avlTree.size());
             flag = false;
         }
         //TEST 5.5
@@ -184,7 +184,7 @@ public class TestStage1 {
         }
         if (avlTree.size()!=120){
             addError("added 0-99, delted 0 and 99, added 200-251, deleted 220-249. expected size was 120, got something else",5,5);
-            System.out.println("size is " + avlTree.size);
+            System.out.println("size is " + avlTree.size());
             flag = false;
         }
         return flag;
