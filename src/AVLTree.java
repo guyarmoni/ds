@@ -838,6 +838,7 @@ public class AVLTree {
 	 * aid method for inserting new items to the tree according to tree list logic
 	 * inserts an item to the ith position in tree-list with key k and info s.
 	 * returns -1 if i<0 or i>tree.size otherwise return 0.
+	 * complexity: O(log(n))
 	 */
 	public int treeListInsert(int i, int k, String s) {
 		if (i < 0 || i > this.size) {
