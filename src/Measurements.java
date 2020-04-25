@@ -15,21 +15,18 @@ public class Measurements {
             listSize = j * 10;
             System.out.println("~~~~~ List Size: " + listSize + " ~~~~~" + "\n");
             int k = 0;
-            int totalRightRotations = 0;
-            int totalLeftRotations = 0;
 
             /* measuring TreeList */
             TreeList treeList = new TreeList();
             long startTime = System.nanoTime();
             while (k < listSize) {
                 treeList.insert(scenario.insertionIndex(k), key, value);
-                // todo: catch number of rotations
                 k++;
             }
             long endTime = System.nanoTime();
             System.out.println("Tree List -");
-            System.out.println("Average Num of Right Rotations: " + totalRightRotations/listSize);
-            System.out.println("Average Num of Left Rotations: " + totalLeftRotations/listSize);
+            System.out.println("Average Num of Right Rotations: " + treeList.tree.RightRotations/listSize);
+            System.out.println("Average Num of Left Rotations: " + treeList.tree.LeftRotations/listSize);
             System.out.println("Average Insertion Time (in milliseconds): "
                     + ( (endTime - startTime)/1000000 )/listSize + "\n");
 

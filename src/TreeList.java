@@ -37,10 +37,17 @@
 	  if (i < 0 || i > this.tree.size) {
 		  return -1;
 	  }
-	  
+
+	   if (this.tree.empty()){
+		   this.tree.insert(k, s);
+		   return 0;
+	   }
+
 	  Item item  = new Item(k, s);
 	  AVLTree.AVLNode insertedNode = (this.tree).new AVLNode(item);
-	  
+
+
+
 	  if (i == this.tree.size) {
 		  AVLTree.AVLNode maxNode = this.tree.select(this.tree.root, this.tree.size);
 		  insertedNode.setParent(maxNode);
@@ -60,7 +67,7 @@
 		  }
 			  
 	  }
-	  this.tree.fixTree(insertedNode);
+	  this.tree.fixTree(insertedNode, false);
 
 	  return 0;
    }
