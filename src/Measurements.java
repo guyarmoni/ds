@@ -3,9 +3,9 @@ import java.util.Random;
 public class Measurements {
 
     public static void main(String[] args) {
-        measure(Scenario.LAST, 3);
-        measure(Scenario.MIDDLE, 3);
-//        measure(Scenario.UNIFORM, 1);
+        measure(Scenario.LAST, 10);
+        measure(Scenario.MIDDLE, 10);
+        measure(Scenario.UNIFORM, 10);
     }
 
     public static void measure(Scenario scenario, int i) {
@@ -26,14 +26,12 @@ public class Measurements {
             TreeList treeList = new TreeList();
             long startTime = System.nanoTime();
             while (k < listSize) {
-//                System.out.println("in iteration number " + k);
                 treeList.insert(scenario.insertionIndex(k), key, value);
                 k++;
             }
             long endTime = System.nanoTime();
             System.out.println("----Tree List----");
-//            System.out.println("tree size is: " + treeList.tree.size());
-            System.out.println("Average Num of Right Rotations: " + treeList.tree.getRightRotations()/listSize); // todo: change rotations to double
+            System.out.println("Average Num of Right Rotations: " + treeList.tree.getRightRotations()/listSize);
             System.out.println("Average Num of Left Rotations: " + treeList.tree.getLeftRotations()/listSize);
             System.out.println("Average Insertion Time (in nanoseconds): "
                     + ( (endTime - startTime) )/listSize);
@@ -43,6 +41,7 @@ public class Measurements {
             CircularList circularList = new CircularList(listSize);
             startTime = System.nanoTime();
             while (k < listSize) {
+//                System.out.println("in iteration number " + k);
                 circularList.insert(scenario.insertionIndex(k), key, value);
                 k++;
             }
