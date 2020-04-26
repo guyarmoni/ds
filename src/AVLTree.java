@@ -246,14 +246,14 @@ public class AVLTree {
 		if (node.BF() == -2) {
 			if (BFRight == -1 || isDelete && BFRight == 0) {
 				rotateL(node);
-				this.leftRotations += 1;
+				this.leftRotations++;
 				return 1;
 			}
 			
 			else if (BFRight == 1) {
 				rotateRL(node);
-				this.leftRotations += 1;
-				this.rightRotations += 1;
+				this.leftRotations++;
+				this.rightRotations++;
 				return 2;
 			}
 		}
@@ -261,14 +261,14 @@ public class AVLTree {
 		else if (node.BF() == 2) {
 			if (BFLeft == -1) {
 				rotateLR(node);
-				this.leftRotations += 1;
-				this.rightRotations += 1;
+				this.leftRotations++;
+				this.rightRotations++;
 				return 2;
 			}
 			
 			else if (BFLeft == 1 || isDelete && BFLeft == 0) {
 				rotateR(node);
-				this.rightRotations += 1;
+				this.rightRotations++;
 				return 1;
 			}
 		}
@@ -328,7 +328,7 @@ public class AVLTree {
 			}
 		}
 		/* increase tree size */
-		this.size += 1;
+		this.size++;
 	}
   
 	
@@ -587,7 +587,7 @@ public class AVLTree {
 		if (node == this.root) {
 			this.root = null;
 		}	 
-		this.size -= 1;
+		this.size--;
 		return rotations;
 	}
 
@@ -812,22 +812,23 @@ public class AVLTree {
 			return null;
 		}
 		
-		IAVLNode currNode = this.root;
+		IAVLNode currNode = node;
 		IAVLNode leftSon = currNode.getLeft();
 		int currRank = ((AVLNode) leftSon).getSize() + 1;
 		
+		/* rank of current node is exactly i, mission accomplished */
+		if (currRank == i) {
+			return (AVLNode)currNode;
+		}
 		/* if rank of current node smaller than i, search in current node's right sub-tree for a node whose rank is (currRank - i) */
-		if (currRank  < i) {
-			select(currNode.getRight(), i - currRank);
+		else if (currRank  < i) {
+			return select(currNode.getRight(), i - currRank);
 		}
 		
 		/* if rank of current node bigger than i, search in current node's left sub-tree for a node whose rank is i */
-		else if (currRank > i) {
-			select(currNode.getLeft(), i);
+		else {
+			return select(currNode.getLeft(), i);
 		}
-		
-		/* rank of current node is exactly i, mission accomplished */
-		return (AVLNode)currNode;
 	}
 	
 	
@@ -878,7 +879,7 @@ public class AVLTree {
 		this.fixTree(insertedNode.getParent(), false);
 
 		/* increase tree size */
-		this.size += 1;
+		this.size++;
 
 		return 0;
 	}

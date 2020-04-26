@@ -69,7 +69,7 @@ public class CircularList{
 		}
 		  
 		/* increase list size by 1, insert item in place */
-		this.len += 1;												
+		this.len++;												
 		this.arr[(this.start + i) % this.len] = item;	
 		
 		return 0;	
@@ -104,7 +104,7 @@ public class CircularList{
 		}
 		   
 		/* decrease list size by 1 */
-		this.len -= 1;												
+		this.len--;												
 		
 		return 0;
 		}

@@ -26,6 +26,7 @@ public class Measurements {
             }
             long endTime = System.nanoTime();
             System.out.println("Tree List -");
+            System.out.println("tree size is: " + treeList.tree.size());
             System.out.println("Average Num of Right Rotations: " + treeList.tree.getRightRotations()); // todo: add mean
             System.out.println("Average Num of Left Rotations: " + treeList.tree.getLeftRotations()); // todo: add mean
             System.out.println("Average Insertion Time (in nanoseconds): "
