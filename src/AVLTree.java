@@ -12,8 +12,8 @@ public class AVLTree {
 	private IAVLNode root;
 	private int size;
 	private IAVLNode pseudoNode;
-	private int leftRotations;
-	private int rightRotations;
+	private double leftRotations;
+	private double rightRotations;
 	
 	
 	/**
@@ -783,7 +783,7 @@ public class AVLTree {
 	 * Returns the number of right rotations performed
 	 * complexity: O(1)
 	 */
-	public int getRightRotations() {
+	public double getRightRotations() {
 		return this.rightRotations;
 	}
 	
@@ -795,7 +795,7 @@ public class AVLTree {
 	 * Returns the number of left rotations performed
 	 * complexity: O(1)
 	 */
-	public int getLeftRotations() {
+	public double getLeftRotations() {
 		return this.leftRotations;
 	}
 	

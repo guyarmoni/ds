@@ -56,8 +56,20 @@ public class CircularList{
 		/* i closer to list's start, shift all items from start to i by -1 , update starting position*/ 
 		if (this.len - i > i) {			
 			for(int j = 0; j < i ; j++) {
-				this.arr[(this.start + j - 1) % this.maxLen] = this.arr[(this.start + j) % this.maxLen];
-				start = (start - 1) % this.maxLen;
+				if ((this.start + j) == 0) {                  /* deal with moving first item in array to end of array */
+					this.arr[this.maxLen - 1] = this.arr[0];
+				}
+				else {
+					this.arr[(this.start + j - 1)] = this.arr[(this.start + j)];
+				}
+			}
+
+			/* updating start */
+			if (this.start == 0) {
+				this.start = this.maxLen-1;
+			}
+			else {
+				this.start -= 1;
 			}
 		}
 		  
