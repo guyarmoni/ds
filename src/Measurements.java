@@ -11,7 +11,7 @@ public class Measurements {
     public static void measure(Scenario scenario, int i) {
         System.out.println("*********************************************************************");
         System.out.println("**** Insertion Scenario: " + scenario.getInfo() + " ****");
-        System.out.println("*********************************************************************"  + "\n");
+        System.out.println("*********************************************************************" + "\n");
 
         int listSize;
         int key = 1;
@@ -31,10 +31,10 @@ public class Measurements {
             }
             long endTime = System.nanoTime();
             System.out.println("----Tree List----");
-            System.out.println("Average Num of Right Rotations: " + treeList.getTree().getRightRotations()/listSize);
-            System.out.println("Average Num of Left Rotations: " + treeList.getTree().getLeftRotations()/listSize);
+            System.out.println("Average Num of Right Rotations: " + treeList.getTree().getRightRotations() / listSize);
+            System.out.println("Average Num of Left Rotations: " + treeList.getTree().getLeftRotations() / listSize);
             System.out.println("Average Insertion Time (in nanoseconds): "
-                    + ( (endTime - startTime) )/listSize);
+                    + ((endTime - startTime)) / listSize);
 
             /* measuring CircularList */
             k = 0;
@@ -48,18 +48,16 @@ public class Measurements {
             endTime = System.nanoTime();
             System.out.println("----Circular List-----");
             System.out.println("Average Insertion Time (in nanoseconds): "
-                    + ( (endTime - startTime) )/listSize + "\n");
+                    + ((endTime - startTime)) / listSize + "\n");
         }
     }
 
 
     /**
-     *
      * public enum Scenario
-     *
+     * <p>
      * containing the 3 possible scenarios of insertion,
      * each has a different insertion index to the list
-     *
      **/
     public enum Scenario {
         LAST("End of list - advantage for CircularList"),
@@ -76,16 +74,19 @@ public class Measurements {
             return info;
         }
 
-        /** Returns the suitable index for current insertion to the list **/
+        /**
+         * Returns the suitable index for current insertion to the list
+         **/
         public int insertionIndex(int k) {
-            switch(this) {
+            switch (this) {
                 case LAST: // index is end of list
                     return k;
                 case MIDDLE: // index is middle of the list
-                    return k/2;
+                    return k / 2;
                 case UNIFORM: // index is randomly chosen
-                    return new Random().nextInt(k+1);
-                default: throw new AssertionError(this);
+                    return new Random().nextInt(k + 1);
+                default:
+                    throw new AssertionError(this);
             }
         }
     }
