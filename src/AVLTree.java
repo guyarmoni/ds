@@ -1,3 +1,14 @@
+/**
+ * Name: Guy Armoni
+ * Username: guya
+ * ID: 205988595
+ * 
+ * Name: Omer Militscher
+ * Username: militscher
+ * ID: 313585085
+ */
+
+
 import java.lang.Math;
 
 /**
@@ -1050,7 +1061,7 @@ public class AVLTree {
 		}
 		
 		/* return true if node is left son, false otherwise (right son or root) */
-		private boolean isLeftSon() {
+		public boolean isLeftSon() {
 			if (this.parent != null) {
 				if (this == this.getParent().getLeft()) {
 					return true;

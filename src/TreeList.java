@@ -1,4 +1,14 @@
 /**
+ * Name: Guy Armoni
+ * Username: guya
+ * ID: 205988595
+ * 
+ * Name: Omer Militscher
+ * Username: militscher
+ * ID: 313585085
+ */
+
+/**
  *
  * Tree list
  *
@@ -6,7 +16,7 @@
  *
  */
 public class TreeList {
-	AVLTree tree;
+	private AVLTree tree;
 	 
 	/**
 	 *  TreeList constructor 
@@ -20,6 +30,7 @@ public class TreeList {
 	 *
 	 * returns the item in the ith position if it exists in the list.
 	 * otherwise, returns null
+	 * complexity: O(log(n))
 	 */
 	public Item retrieve(int i){
 		if (i < 0 || i >= tree.size()) {
@@ -37,6 +48,7 @@ public class TreeList {
 	 *
 	 * inserts an item to the ith position in list  with key k and  info s.
 	 * returns -1 if i<0 or i>n otherwise return 0.
+	 * complexity: O(log(n))
 	 */
 	public int insert(int i, int k, String s) {	 
 		return this.tree.treeListInsert(i, k, s);
@@ -48,6 +60,7 @@ public class TreeList {
 	 *
 	 * deletes an item in the ith posittion from the list.
 	 * returns -1 if i<0 or i>n-1 otherwise returns 0.
+	 * complexity: O(log(n))
 	 */
 	public int delete(int i){
 		if (i < 0 || i >= this.tree.size()) {
@@ -58,5 +71,13 @@ public class TreeList {
 		this.tree.delete(deletedNode);
 		   
 		return 0;
+	}
+	
+	/* return the AVLTree contained in TreeList 
+	 * complexity: O(1)
+	 * */
+	
+	public AVLTree getTree() {
+		return this.tree;
 	}
 }

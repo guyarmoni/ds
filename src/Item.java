@@ -1,3 +1,13 @@
+/**
+ * Name: Guy Armoni
+ * Username: guya
+ * ID: 205988595
+ * 
+ * Name: Omer Militscher
+ * Username: militscher
+ * ID: 313585085
+ */
+
 public class Item{
 	
 	private int key;

@@ -1,4 +1,15 @@
 /**
+ * Name: Guy Armoni
+ * Username: guya
+ * ID: 205988595
+ * 
+ * Name: Omer Militscher
+ * Username: militscher
+ * ID: 313585085
+ */
+
+
+/**
  *
  * Circular list
  *
@@ -7,10 +18,10 @@
  */
  
 public class CircularList{
-	int maxLen;
-	int len;
-	Item[] arr;
-	int start;
+	private int maxLen;
+	private int len;
+	private Item[] arr;
+	private int start;
 	 
 	/**
 	 *  CircularList constructor 
